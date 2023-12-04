@@ -47,4 +47,5 @@ USER root
 CMD rails s -b 0.0.0.0
 
 # Para correr o docker sudo docker run -p 1000:3000 sportsonline:v1 
+# sudo docker build . -t sportsonline:v1
 # e aceda na no url 0.0.0.0:1000 
