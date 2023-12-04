@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+  container:
+    image: ubuntu
+    tty: true
+    build: .
+
+    # ======== Windows
+    #volumes:
+      #- "~/sportsonline/:/sportsonline/"
+
+    # ====== Linux && MacOS
+    volumes:
+      - "./sportsonline/:/sportsonline/"
+
+    #command: >
+    #  sh -c "/projects/start.sh"
+
+
