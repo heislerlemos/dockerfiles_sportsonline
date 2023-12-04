@@ -7,7 +7,7 @@ ENV TZ=Africa/Luanda
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN \
 apt-get update  \
-&&  apt-get install -y make ruby  ruby-dev build-essential curl  gnupg \
+&&  apt-get install -y make ruby  ruby-dev build-essential curl  gnupg  libpq-dev\ 
 && gem install rails 
 RUN echo "1" | apt-get -y install  postgresql postgresql-contrib 
 
@@ -30,9 +30,20 @@ RUN gem install rails -v "7.0.4"
 COPY sportsonline /home/ubuntu/app
 # mete a estação de trabalho do app
 WORKDIR /home/ubuntu/app/sportsonline
+#RUN chmod -R 777 /home/ubuntu/app/sportsonline
+RUN chmod -R 777 /usr/local/rvm/gems/ruby-3.1.2/
 # muda de usario
 #atualiza os pacotes da biblioteca
 #reconfigura a base dados
+
+WORKDIR /home/ubuntu/app/sportsonline
+#RUN touch /home/ubuntu/app/log/development.log
+#RUN chmod 777 /home/ubuntu/app/log/development.log
+
 USER ubuntu
 RUN bundle install
 
+USER root
+CMD rails s
+
+ 
