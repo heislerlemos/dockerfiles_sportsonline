@@ -26,9 +26,9 @@ docker-compose up -d
 
 ## Ubuntu image
 ```bash
-docker exec -it dockerfiles_sportsonline-container-1 /bin/bash
+docker exec -it dockerfiles_sportsonline-sportsonline-1 /bin/bash
 ```
-
+url http://0.0.0.0:1000 
 
 
 
@@ -42,7 +42,7 @@ sudo docker run -p 1000:3000 sportsonline:v1
 ```
 sudo docker build . -t sportsonline:v1
 ```
-### e aceda na no url 0.0.0.0:1000 
+### e aceda na no url http://0.0.0.0:1000 
 
 
 
