@@ -22,21 +22,36 @@ services:
 
 # mongood - Exemplo de como interligar a base de dados a aplicação
 # Ilustrativo e somente um exemplar 
-  mongodb:
-    image: mongo:4.0.8
-    container_name: mongodb_sportsonline
+#  mongodb:
+#    image: mongo:4.0.8
+#    container_name: mongodb_sportsonline
+#    restart: unless-stopped
+#    command: mongod --auth
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: admin
+#      MONGO_INITDB_ROOT_PASSWORD: myadminpassword
+#      MONGO_INITDB_DATABASE: admin
+#      MONGODB_DATA_DIR: /data/db
+#      MONDODB_LOG_DIR: /dev/null
+#    volumes:
+#      - mongodbdata:/data/db
+#    networks:
+#      - backend
+
+
+# setting up postgresql 
+# 
+
+  postgresql:
+    image: 'postgres:latest'
+    container_name: postgresql_sportsonline
     restart: unless-stopped
-    command: mongod --auth
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: myadminpassword
-      MONGO_INITDB_DATABASE: admin
-      MONGODB_DATA_DIR: /data/db
-      MONDODB_LOG_DIR: /dev/null
-    volumes:
-      - mongodbdata:/data/db
-    networks:
-      - backend
+    POSTGRES_USER: ubuntu
+    POSTGRES_PASSWORD: ubuntu
+    POSTGRES_DB: default_database
+
+
 
 # Interligação entre frontend App com a base de dados
 networks:
@@ -45,6 +60,6 @@ networks:
   backend:
     driver: bridge
 
-volumes:
-  mongodbdata:
-    driver: local
+    #volumes:
+    # mongodbdata:
+    #driver: local
